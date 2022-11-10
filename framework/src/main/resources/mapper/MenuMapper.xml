@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meet.mapper.MenuMapper">
+    <delete id="deleteById" parameterType="long">
+        delete
+        from sys_menu
+        where id = #{id}
+    </delete>
+
+    <select id="getInfoById" resultType="com.meet.domain.entity.Menu" parameterType="long">
+        SELECT *
+        from sys_menu
+        where id = #{id};
+    </select>
+    <select id="getPermsById" resultType="java.lang.String">
+        SELECT sys_menu.perms
+        FROM sys_menu
+        WHERE sys_menu.id IN
+              (
+                  SELECT sys_role_menu.menu_id
+                  FROM (
+                            (SELECT role_id FROM sys_user_role WHERE user_id = #{id}) AS A
+                           JOIN sys_role_menu
+                                ON A.role_id = sys_role_menu.role_id
+                      )
+              )
+
+
+    </select>
+</mapper>

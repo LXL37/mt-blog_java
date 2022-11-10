@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meet.mapper.RoleMapper">
+    <insert id="assignRolePerms">
+        INSERT INTO sys_role_menu(role_id,menu_id)VALUES(#{arg0},#{arg1})
+    </insert>
+    <update id="deleteRole" parameterType="long">
+      delete from sys_role where id=#{id};
+    </update>
+
+
+</mapper>

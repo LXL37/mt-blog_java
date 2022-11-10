@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meet.mapper.ArticleMapper">
+
+
+    <select id="getAllArticleTitle" resultType="com.meet.domain.vo.ArticleTitleVo">
+        select  sg_article.id,sg_article.title from sg_article;
+    </select>
+</mapper>
